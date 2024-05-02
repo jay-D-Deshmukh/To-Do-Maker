@@ -1,0 +1,18 @@
+import express from 'express';
+import { config } from 'dotenv';
+import connectTODb from './config/ConnectionTODb.js';
+config();
+
+const app = express();
+app.use(express.json());
+
+app.all("*",(req,res)=>{
+    res.send("page not found")
+})
+console.log(process.env.PORT)
+
+app.listen(process.env.PORT || 3031, async()=>{
+    await connectTODb(process.env.DATABASE_URL) 
+    console.log(`server is running on port: http://localhost:${process.env.PORT}`)
+    
+})
