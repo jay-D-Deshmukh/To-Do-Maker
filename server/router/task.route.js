@@ -1,6 +1,9 @@
-import express from 'express'
-import { createTask } from '../controllers/task.comtroller'
+import express from 'express';
+import { createTask, getTasks } from '../controllers/task.comtroller.js';
 
-const route = express.Router()
+const route = express.Router();
 
-route.get('/createtask',createTask)
+route.post('/createtask',createTask);
+route.get('/',getTasks)
+
+export default route;

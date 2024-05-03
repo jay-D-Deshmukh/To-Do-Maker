@@ -12,11 +12,17 @@ const taskSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  createdAt: { 
-    type: Date, 
-    default: Date.now 
-}
+  state: {
+    type: String,
+    enum: ["pending", "in progress", "completed"],
+    default: "pending"
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const Task = mongoose.model('Task',taskSchema)
+const Task = mongoose.model("Task", taskSchema);
 export default Task;
