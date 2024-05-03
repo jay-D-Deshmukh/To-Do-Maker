@@ -7,6 +7,8 @@ config();
 const app = express();
 app.use(express.json());
 
+app.use("/api/v1/user",userroutes)
+
 app.all("*",(req,res)=>{
     res.send("page not found")
 })

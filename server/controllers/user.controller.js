@@ -1,14 +1,25 @@
-import User from "../model/user.model.js"
+import User from '../model/user.model.js'
 
 
 export const registerUser= async(req, res)=>{
+  const userdata = req.body;
+  try {
+
+    const datares = await User.create(userdata);
+    res.status(201).json({message: "User created successfully",})
+
+    
+  } catch (error) {
+    res.status(400).json({message: error.message})
+    
+  }
  
-  res.status(200).json({mag:"user created"})
+  
   
      
 }
 
-export const loginUser =async(req, res)={
+export const loginUser =(req, res)=>{
 
 
 }
